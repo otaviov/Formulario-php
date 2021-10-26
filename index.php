@@ -1,5 +1,3 @@
-
-
 <?php
 
 //usando o PHPMailer para enviar mensagem para o email
@@ -10,10 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 
 include_once './connection.php';
-require './vendor/autoload';
-require '/vendor/phpmailer/phpmailer/src/Exception';
-require '/vendor/phpmailer/phpmailer/src/PHPMailer';
-require '/vendor/phpmailer/phpmailer/src/SMTP';
+require './lib/vendor/autoload.php';
 
 ?>
 
@@ -149,3 +144,4 @@ require '/vendor/phpmailer/phpmailer/src/SMTP';
 </body>
 
 </html>
+

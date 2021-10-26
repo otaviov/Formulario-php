@@ -82,6 +82,9 @@ require './lib/vendor/autoload.php';
 
                             $mail->send();
 
+                            //limpar o campo de email do cliente para destruir o endereço (para que o proximo email não seja enviado novamente)
+                            $mail->clearAddresses();
+
                             echo "Mensagem de contato enviada com sucesso!<br>";
                         } catch (Exception $e) {
                             echo "Erro: Mensagem de contato não enviada";

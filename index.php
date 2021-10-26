@@ -1,3 +1,7 @@
+<?php
+include_once './connection.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -27,7 +31,24 @@
                 $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
                 
                 if(!empty($data ['SendAddMsg'])){
+
                     var_dump($data);
+                    $query_msg = "INSERT INTO contacts_msgs (name, email, subject, content, created) VALUES (:name, :email, :subject, :content, NOW()) ";
+                    $add_msg = $conn->prepare($query_msg);
+
+                    $add_msg->bindParam(':name', $data['name'], PDO::PARAM_STR);
+                    $add_msg->bindParam(':email', $data['email'], PDO::PARAM_STR);
+                    $add_msg->bindParam(':subject', $data['subject'], PDO::PARAM_STR);
+                    $add_msg->bindParam(':content', $data['content'], PDO::PARAM_STR);
+                    
+                    $add_msg->execute();
+
+                    if($add_msg->rowCount()){
+                        echo "Mensagem de contato enviada com sucesso!<br>";
+                    }else{
+                        echo "Erro: Mensagem de contato não enviada!<br>";
+                    }
+
                 }
                 ?>
 
@@ -74,13 +95,8 @@
 
                 <!-- Botão Enviar -->
                 <center>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="submit"></label>
-                        <div class="col-md-4">
-                            <button name = "SendAddMsg" type="submit" class="btn btn-inverse">Enviar</button>
-                        </div>
-                    </div>
-
+                <input type = "submit" value="Enviar" name="SendAddMsg">
+                </center>
             </fieldset>
         </form>
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulário PHP com anexo</title>
+    <title>Criando formulario em php</title>
 
     <!-- Layout -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -18,37 +18,44 @@
     <div class="container">
         <br>
 
-        <form class="form-horizontal" method="POST" action="envia.php" enctype="multipart/form-data">
+        <form class="form-horizontal" name = "add_msg" method="POST" action="" enctype="multipart/form-data">
             <fieldset>
-
                 <!-- Título do formulário -->
-                <legend>Formulário PHP com envio de anexo</legend>
+                <legend>Furmulario com anexo em php</legend>
 
-                <!-- Campo: Nome -->
+                <?php
+                $data = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+                
+                if(!empty($data ['SendAddMsg'])){
+                    var_dump($data);
+                }
+                ?>
+
+                <!-- Nome -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Nome</label>
+                    <label class="col-md-4 control-label" for="nome">Nome:</label>
                     <div class="col-md-4">
-                        <input id="nome" name="nome" placeholder="Informe seu nome" class="form-control input-md" required="" type="text">
+                        <input id = "name" name="name" placeholder="Informe seu nome completo" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <!-- Campo: Email -->
+                <!-- Email -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Email</label>
                     <div class="col-md-4">
-                        <input id="replyto" name="replyto" placeholder="Informe seu email" class="form-control input-md" required="" type="text">
+                        <input id = "name" name="email" placeholder="Informe seu melhor email" class="form-control input-md" required="" type="email">
                     </div>
                 </div>
 
-                <!-- Campo: Assunto -->
+                <!-- Assunto -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Assunto</label>
+                    <label class="col-md-4 control-label" for="nome">Assunto da mensagem</label>
                     <div class="col-md-4">
-                        <input id="assunto" name="assunto" placeholder="Informe o assunto da mensagem" class="form-control input-md" required="" type="text">
+                        <input id = "subject" name="subject" placeholder="Informe o assunto da mensagem" class="form-control input-md" required="" type="text">
                     </div>
                 </div>
 
-                <!-- Campo: anexo -->
+                <!-- anexo -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="arquivo">Anexo</label>
                     <div class="col-md-4">
@@ -57,11 +64,11 @@
                     </div>
                 </div>
 
-                <!-- Campo: Mensagem -->
+                <!-- Mensagem -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="mensagem">Mensagem</label>
+                    <label class="col-md-4 control-label" for="mensagem">´Conteúdo da mensagem</label>
                     <div class="col-md-4">
-                        <textarea class="form-control" id="mensagem" name="mensagem"></textarea>
+                        <textarea class="form-control" id="content" name="content"></textarea>
                     </div>
                 </div>
 
@@ -70,7 +77,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="submit"></label>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-inverse">Enviar</button>
+                            <button name = "SendAddMsg" type="submit" class="btn btn-inverse">Enviar</button>
                         </div>
                     </div>
 

@@ -10,6 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 include_once './connection.php';
 require './lib/vendor/autoload.php';
 
+
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +64,12 @@ require './lib/vendor/autoload.php';
                             //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                             $mail->CharSet = 'UTF-8';
                             $mail->isSMTP();
-                            $mail->Host = 'smtp.mailtrap.io';
+                            $mail->Host = 'smtp do servidor de email';
                             $mail->SMTPAuth = true;
-                            $mail->Username = '7bf2ab87cc4b3e';
-                            $mail->Password = '5cda9d286a9a62';
+                            $mail->Username = 'user ou email aqui';
+                            $mail->Password = 'senha aqui';
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                            $mail->Port = 2525;
+                            $mail->Port = 'porta do servidor aqui (sem aspas)';
 
                             $mail->setFrom('amandavv32@gmail.com', 'Atendimento');
                             $mail->addAddress($data['email'], $data['name']);
